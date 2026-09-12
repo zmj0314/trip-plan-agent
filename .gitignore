@@ -1,0 +1,31 @@
+# --- python ---
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+
+# --- node ---
+node_modules/
+web/dist/
+web/*.log
+
+# --- runtime data: sessions, checkpoints, caches, logs ---
+var/
+
+# --- generated artifacts (regenerate from source; do not track) ---
+output/
+
+# --- credentials: never in the repository (framework §6.11) ---
+.env
+.env.*
+!.env.example
+
+# --- editor / OS ---
+.idea/
+.vscode/
+Thumbs.db
+.DS_Store
+
+# --- third-party reference material (not ours to redistribute) ---
+14、Agent项目-智能旅行规划Agent.pdf

@@ -1,0 +1,36 @@
+[project]
+name = "travel-plan-agent"
+version = "0.0.1"
+description = "Travel planning agent (v1 domestic) - framework M0 skeleton"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.32",
+    "langgraph>=0.2.60",
+    "langgraph-checkpoint-sqlite>=2.0",
+    "openai>=1.55",
+    "pydantic>=2.6",
+    "pydantic-settings>=2.2",
+    "httpx>=0.27",
+    "sse-starlette>=2.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.24",
+    "respx>=0.22",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+filterwarnings = ["ignore::DeprecationWarning"]
+# NOTE: do not pin `--basetemp` here. Pointing pytest's temp root at `var/` puts
+# it inside the project, where two different security contexts (an elevated
+# shell and a sandboxed one) both write -- and then neither can delete it, so
+# every `tmp_path` fixture errors out. The default per-context OS temp is the
+# right place. Run the suite from one context.
+
+[tool.setuptools.packages.find]
+include = ["app*"]
